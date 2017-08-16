@@ -66,7 +66,7 @@
 }
 % MARCH 12 FIX for TOC
 
-% MARCH 12 FIX for LOF 
+% MARCH 12 FIX for LOF
 \renewcommand\listoffigures{%
     \chapter*{\listfigurename}
     \vskip 10pt
@@ -92,17 +92,18 @@
 
 %%%%%%%%%%%%%% INDENTS LINES AFTER FIRST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % MARCH 12 FIX for TOC
+\def\@dotsep{1}
 \def\@dottedtocline#1#2#3#4#5{\ifnum #1>\c@tocdepth \else
   \vskip \z@ plus .2pt
   {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
     \parindent #2\relax\@afterindenttrue
    \interlinepenalty\@M
    \leavevmode
-   \@tempdima #3\relax \advance\leftskip \@tempdima 
-   \advance\leftskip 1em \hbox{}\hskip 
-  -\leftskip 
+   \@tempdima #3\relax \advance\leftskip \@tempdima
+   \advance\leftskip 1em \hbox{}\hskip
+  -\leftskip
    #4\nobreak\leaders\hbox{$\m@th \mkern \@dotsep mu.\mkern \@dotsep
-       mu$}\hfill \nobreak 
+       mu$}\hfill \nobreak
            \hbox to\@pnumwidth{\hfil\rm #5}\par\vskip 1.8ex}\fi}
 %%%%%%%%%%%%%% INDENTS LINES AFTER FIRST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -129,7 +130,7 @@
 \def\l@subsection{\@dottedtocline{2}{3.7em}{3em}}
 \def\l@subsubsection{\@dottedtocline{3}{7.0em}{4.1em}}
 \def\l@paragraph{\@dottedtocline{4}{10em}{5em}}
-\def\l@subparagraph{\@dottedtocline{5}{12em}{6em}}  
+\def\l@subparagraph{\@dottedtocline{5}{12em}{6em}}
 
 % MARCH 12 FIX FOR TOC,LOF,LOT
 \def\l@figure{\@dottedtocline{1}{0.001em}{2.5em}}
@@ -147,6 +148,7 @@
 % JERRY's STYLE FILE SETTINGS
 %\topmargin=.2in
 \topmargin=-.375in
+%\topmargin=-.725in
 \oddsidemargin=0.505in          % was 0.495 - annette asked for a little more
 \evensidemargin=0in
 \textheight=9.0in
@@ -155,7 +157,8 @@
 \headsep=0.1in              % Distance between page nums and text
 \itemindent=0.8in
 %\footheight 0.2in
-\footskip=0.5in            % default is 0.5 in and page numbers come out too low
+%\footskip=0.285in         % default is 0.5 in and page numbers come out too low
+\footskip=0.5in       % the distance of page nums away from the margin was changed into 0.5 by ruihua       
 %\marginparsep=10pt
 %\marginparwidth=40pt
 %\topmargin=-0.375in            % Put the pagenumber in the correct place
@@ -206,7 +209,7 @@
 \renewcommand{\listtablename}{LIST OF TABLES}
 \renewcommand{\chaptername}{CHAPTER}
 \renewcommand{\appendixname}{APPENDIX}
-\renewcommand{\bibname}{BIBLIOGRAPHY}
+\renewcommand{\bibname}{REFERENCES}
 \renewcommand{\indexname}{INDEX}
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 %\renewcommand{\thempfootnote}{\arabic{mpfootnote}}
@@ -231,10 +234,10 @@
 % on chapter pages, page style is plain and so page numbering
 % goes at the bottom of the page
 \def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@
-\@afterindentfalse \secdef\@chapter\@schapter} 
+\@afterindentfalse \secdef\@chapter\@schapter}
 
 \def\@schapter#1{\if@twocolumn \@topnewpage[\@makeschapterhead{#1}]
-	\else \@makeschapterhead{#1} 
+	\else \@makeschapterhead{#1}
 	\@afterheading\fi}
 
 % HKT 06/30/2003: Add \MakeUppercase to capitalize the chapter.
@@ -251,10 +254,10 @@
 \fi
 	\chaptermark{#1}
 	\if@twocolumn
-		\@topnewpage[\@makechapterhead{#2}] 
+		\@topnewpage[\@makechapterhead{#2}]
 	\else \@makechapterhead{#2}
- 		\@afterheading 
-	\fi} 
+ 		\@afterheading
+	\fi}
 
 \def\@makechapterhead#1{%
   {\parindent \z@ \raggedright \normalfont
@@ -309,7 +312,7 @@
 \savebox{\toctopbox}[\textwidth]{\bf Chapter \hfill Page}
 \def\toc1{%
 \gdef\@texttop{
-\parindent 0pt \raggedleft 
+\parindent 0pt \raggedleft
 {\msp
 \begin{center}
 	\bf \contentsname
@@ -326,7 +329,7 @@
 \savebox{\loftopbox}[\textwidth]{\bf Figure \hfill Page}
 \def\lof1{%
 \gdef\@texttop{
-\parindent 0pt \raggedleft 
+\parindent 0pt \raggedleft
 {\msp
 \begin{center}
 	\bf \listfigurename
@@ -343,7 +346,7 @@
 \savebox{\lottopbox}[\textwidth]{\bf Table \hfill Page}
 \def\lot1{%
 \gdef\@texttop{
-\parindent 0pt \raggedleft 
+\parindent 0pt \raggedleft
 {\msp
 \begin{center}
 	\bf \listtablename
@@ -365,7 +368,7 @@
 % ACNJ 28/01/2001  : FORMAT FOR APPENDICES
 % ACNJ 28/01/20
 
-% USE THIS COMMAND \defensedate{Month}{Day}{Year} % 
+% USE THIS COMMAND \defensedate{Month}{Day}{Year} %
 \newcommand{\defensedate}[3]{%
 	\def\defensemonth{#1}
 	\def\defenseday{#2}
@@ -385,15 +388,15 @@
 		\vskip 3.0in by
 		\par \@author
 		\vfill
-		A Dissertation                       %edited by Yalin for Proposal purpose
-		\par Submitted to the Faculty of
-		\par New Jersey Institute of Technology 
-		\par and Rutgers, The State University of New Jersey -- Newark
-		\par in Partial Fulfillment of the Requirements for the Degree of
-		\par Doctor of Philosophy in Mathematical Sciences
-		\vskip 20pt
-		\par Department of Mathematical Sciences, NJIT
-		\par Department of Mathematics and Computer Science, Rutgers-Newark
+        A dissertation
+        \par Submitted to the Faculty of
+        \par New Jersey Institute of Technology
+        \par Rutgers, The State University of New Jersey -- Newark
+        \par in Partial Fulfillment of the Requirements for the Degree of
+        \par Doctor of Philosophy in Mathematical Sciences
+        \vskip 20pt
+        \par Department of Mathematical Sciences
+        \par Department of Mathematics and Computer Science, Rutgers-Newark
 		%\par Department of \@department
 		\vskip 20pt
 		\par \defensemonth~\defenseyear
@@ -425,7 +428,7 @@
 % ACNJ 28/01/2001  : COPYRIGHT PAGE FOR NJIT THESIS FORMATTING STYLE
 \newcommand{\makecopyright}{%
 	\newpage
-	\thispagestyle{empty}
+\thispagestyle{empty}
 	\begin{center}
 		\topskip 3.5in
 		Copyright \copyright ~\defenseyear~ by \@author
@@ -439,9 +442,9 @@
 \def\@advisorname{\@latex@warning@no@line{No \noexpand\advisorname given}}
 \def\@advisortitle{\@latex@warning@no@line{No \noexpand\advisortitle given}}
 
-\def\coadvisor#1#2{\gdef\@coadvisorname{#1}\gdef\@coadvisortitle{#2}}		%%%%% Added by Yalin Zhu March, 2016
-\def\@coadvisorname{\@latex@warning@no@line{No \noexpand\coadvisorname given}}    %%%%% Added by Yalin Zhu March, 2016
-\def\@coadvisortitle{\@latex@warning@no@line{No \noexpand\coadvisortitle given}}          %%%%% Added by Yalin Zhu March, 2016
+\def\coadvisor#1#2{\gdef\@coadvisorname{#1}\gdef\@coadvisortitle{#2}} 
+\def\@coadvisorname{\@latex@warning@no@line{No \noexpand\coadvisorname given}} 
+\def\@coadvisortitle{\@latex@warning@no@line{No \noexpand\coadvisortitle given}}
 
 \newif\if@members
 \@membersfalse
@@ -450,7 +453,7 @@
 \def\member#1#2{
 	\if@members
 		\edef\@committee{
-			\@committee, 
+			\@committee,
 			{#1, Committee Member \hfill Date \par #2}
 		}
 	\else
@@ -471,8 +474,8 @@
 		\MakeUppercase{\@title}
 		\vskip 15pt \@author
 	\end{center}
-	{\singlespace 
-	\vskip .5in 
+	{\singlespace
+	\vskip .5in
 	\flushleft{}
 % ESA 12/2001    : made the line thicker as request of Graduate Studies
 %                  Office
@@ -480,28 +483,30 @@
 %        \hrule \vskip 0.1pt %%To make a line thicker	
 %        \hrule \vskip 0.1pt %%To make a line thicker
 %	 \hrule \vskip 2pt
-\vfill
+	\vfill
 	\rule{\textwidth}{1.5pt}
-	\@advisorname, Dissertation Co-Advisor \hfill Date
+	\@advisorname, Dissertation Advisor \hfill Date
 	\par \@advisortitle
-						%%%%% Added by Yalin Zhu March, 2016
-	\vfill					%%%%% Added by Yalin Zhu March, 2016
-	\rule{\textwidth}{1.5pt}						%%%%% Added by Yalin Zhu March, 2016
-	\@coadvisorname, Dissertation Co-Advisor \hfill Date		%%%%% Added by Yalin Zhu March, 2016
-	\par \@coadvisortitle						%%%%% Added by Yalin Zhu March, 2016
+	%%%%% Added by Yalin Zhu March, 2016
+	\vfill	%%%%% Added by Yalin Zhu March, 2016
+	\vskip .2in %%% Added by Ruihua Cheng May, 2016
+	\vskip 15pt
+	\rule{\textwidth}{1.5pt}	%%%%% Added by Yalin Zhu March, 2016
+	\@coadvisorname, Dissertation Co-Advisor \hfill Date	%%%%% Added by Yalin Zhu March, 2016
+	\par \@coadvisortitle	%%%%% Added by Yalin Zhu March, 2016
 	{\@for \committee:=\@committee \do{
 			\vfill
 			\flushleft{}
                         % \hrule \vskip 0.1pt %%To make a line thicker	
 			% \hrule \vskip 0.1pt %%To make a line thicker
 			% \hrule \vskip 2pt
+	\vskip 20pt
 			\rule{\textwidth}{1.5pt}
 			\committee
-	}}
-        %% change this vspace below and you change how close the committee member
+	}}        %% change this vspace below and you change how close the committee member
         %% signature lines are to one another.
         %% it automatically does this because of the \vfill above.
-        \vskip 1.0in  %% controls spacing to bottom of page
+        \vskip 1.0in  %% controls spacing to bottom of page, has been chanaged by ruihua
 	\newpage
 	\endsinglespace}
 }
@@ -517,11 +522,11 @@
 \newif\if@degrees
 \@degreesfalse
 
-% ACNJ 28/01/2001  : formatting for degrees, within biography page 
+% ACNJ 28/01/2001  : formatting for degrees, within biography page
 \def\degree#1#2{
 	\if@degrees
 		\edef\@degrees{
-			\@degrees, 
+			\@degrees,
 			{#1\vskip -2.5pt #2}
 		}
 	\else
@@ -531,7 +536,7 @@
 		\@degreestrue
 	\fi
 }	
-% ACNJ 28/01/2001  : formatting for degrees, within biography page 
+% ACNJ 28/01/2001  : formatting for degrees, within biography page
 
 % ACNJ 28/01/2001  : BIOGRAPHY PAGES FOR NJIT THESIS FORMATTING STYLE
 \newcommand{\makebiography}{%
@@ -550,14 +555,13 @@
 	\end{tabbing}
 	\par\noindent {\bf Undergraduate and Graduate Education:}
 	%  ACNJ 28/01/2001  : \printdegree command definitely elsewhere
-	\vskip -20pt\printdegrees 
+	\vskip -20pt\printdegrees
 	\begin{tabbing}
 		\hskip 1.5in \= \kill
 		\par\noindent {\bf Major:} \> \@major
 	\end{tabbing}
-%	\par\noindent {\bf Presentations and Publications:}
+	\par\noindent {\bf Presentations and Publications:}
 	%  ACNJ 28/01/2001  : \printpublications command definitely elsewhere
-	\par\noindent {\bf Presentations:}
 	\printpublications
 	\newpage
 }
@@ -585,10 +589,10 @@
 %\savebox{\lostopbox}[\textwidth]{\bf Symbol \hfill  Description}
 \def\los1{%
 \gdef\@texttop{
-\parindent 0pt \raggedleft 
+\parindent 0pt \raggedleft
 %%%%%%%% March 12 Naire fix%%%%%%%%%
 {\msp \begin{center}
-        \bf  LIST OF SYMBOLS 
+        \bf  LIST OF SYMBOLS
         \vskip -1pt (Continued)
 %\        \usebox{\lostopbox}
 \end{center}}
@@ -604,19 +608,19 @@
         \chapter*{LIST OF SYMBOLS}
         \vskip 10pt
 %        \usebox{\lostopbox}\par \vspace{1ex}
-        \gdef\@texttop{\los1} 
-        {\msp \@listofsymbols}             
+        \gdef\@texttop{\los1}
+        {\msp \@listofsymbols}
         \newpage
         \gdef\@texttop{}
 }
 
-% ACNJ 22/03/2001  : GLOSSARY OF BIOLOGICAL SYMBOLS 
+% ACNJ 22/03/2001  : GLOSSARY OF BIOLOGICAL SYMBOLS
 \def\glossaryofterms#1{\gdef\@glossaryofterms{#1}}
 \def\@glossaryofterms{\@latex@warning@no@line{No \noexpand\glossaryofterms given}}
 
 \def\gloss1{%
 \gdef\@texttop{
-\parindent 0pt \raggedleft 
+\parindent 0pt \raggedleft
 {\msp \begin{center}
         \bf  GLOSSARY OF BIOLOGICAL TERMS
         \vskip -1pt (Continued)
@@ -634,8 +638,8 @@
         \chapter*{GLOSSARY OF BIOLOGICAL TERMS}
         \vskip 10pt
 %        \usebox{\lostopbox}\par \vspace{1ex}
-        \gdef\@texttop{\gloss1} 
-        {\msp \@glossaryofterms}             
+        \gdef\@texttop{\gloss1}
+        {\msp \@glossaryofterms}
         \newpage
         \gdef\@texttop{}
 }
@@ -656,19 +660,19 @@
 % ACNJ 28/01/2001  : DEDICATION PAGE FORMATTING
 
 
-% ACNJ 28/01/2001  : formatting for printing degree list, within biography page 
+% ACNJ 28/01/2001  : formatting for printing degree list, within biography page
 \def\printdegrees{
 	%{DEGREE\\SCHOOL}
 	\begin{itemize}
 		{\@for \onedegree:=\@degrees \do{
 			\singlespace
-			\item \onedegree 
+			\item \onedegree
 			\vskip -10pt
 		}}
 		%\vskip -10pt
 	\end{itemize}
 }
-% ACNJ 28/01/2001  : formatting for printing degree list, within biography page 
+% ACNJ 28/01/2001  : formatting for printing degree list, within biography page
 
 \def\publications#1{\gdef\@publications{#1}}
 \def\@publications{\@latex@warning@no@line{No \noexpand\publications given}}
@@ -681,7 +685,7 @@
              {\settowidth\labelwidth{\@biblabel{#1}}%
 	     \setlength{\leftmargin}{0pt}   %% added 02/01, no indentation due to list
            % \leftmargin\labelwidth   %% commented out 02/01, problem in biographical sketch with bibliography listing
-           % \advance\leftmargin\labelsep  %% commented out 02/01, problem in biographical sketch with bibliography listing 
+           % \advance\leftmargin\labelsep  %% commented out 02/01, problem in biographical sketch with bibliography listing
 %%%%%%%%%%%%%%%%%%%%%%  02/01/2001 new section added to give indentation after first line of biblio refs
              \newlength{\bibhang}
              \setlength{\bibhang}{0.5in}
@@ -702,7 +706,7 @@
       \endlist}
 % ACNJ 28/01/2001  : SPECIAL BIOGRAPHY FORMAT FOR PUBLICATIONS, within biography page
 
-% ACNJ 28/01/2001  : formatting for printing publications list, within biography page 
+% ACNJ 28/01/2001  : formatting for printing publications list, within biography page
 \newcounter{biobib}
 \def\printpublications{
 	%{AUTHOR\\TITLE\\JOURNAL\\VOLUME\\YEAR}
@@ -713,7 +717,7 @@
 	}}
 	\end{biobibliography}
 }
-% ACNJ 28/01/2001  : formatting for printing publications list, within biography page 
+% ACNJ 28/01/2001  : formatting for printing publications list, within biography page
 
 \renewenvironment{thebibliography}[1]
 	 {\chapter*{\bibname
@@ -728,7 +732,7 @@
        %%%%     \advance\leftmargin\labelsep
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  02/01/2001 new section added to give indentation after first line of biblio refs
              \newlength{\bibhangADIE}
-             \setlength{\bibhangADIE}{0.5in}
+             \setlength{\bibhangADIE}{0 in} %was 0.5 before changed by ruihua
              \setlength{\itemindent}{-\bibhangADIE}              %  is undefined.
              \setlength{\leftmargin}{\bibhangADIE}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  02/01/2001 new section added to give indentation after first line of biblio refs
@@ -755,7 +759,7 @@
 	\makebiography
 	\makededication
 	\makeacknowledgment
-} 
+}
 % ACNJ 28/01/2001  : INTRODUCTORY PAGES FOR NJIT THESIS FORMATTING STYLE
 
 % ACNJ 28/01/2001  : START MAIN BODY OF TEXT/CHAPTERS OF THESIS
@@ -766,8 +770,8 @@
 %	\pagestyle{myheadings}
 	\pagestyle{plain} % Changed by Shoubhik Mondal, 2014, initially was \pagestyle{myheadings}
 	\pagenumbering{arabic}
-%	\def\@evenhead{{\bf\thepage}\hfil\slshape\leftmark}% Commented by Yalin Zhu, 2016
-%	\def\@oddhead{{\slshape\rightmark}\hfil{\bf\thepage}}% Commented by Yalin ZHu, 2016
+%	\def\@evenhead{{\bf\thepage}\hfil\slshape\leftmark}% Commented by Shoubhik Mondal, 2014
+%	\def\@oddhead{{\slshape\rightmark}\hfil{\bf\thepage}}% Commented by Shoubhik Mondal, 2014
 }
 % ACNJ 28/01/2001  : START MAIN BODY OF TEXT/CHAPTERS OF THESIS
 
@@ -781,14 +785,14 @@
  \setbox\@tempboxa\hbox{{\bfseries#1\enspace}{\normalsizeADIE#2}}	%% ***different
  \ifdim \wd\@tempboxa >\hsize
          {\bfseries#1\enspace} {\normalsizeADIE#2}\par
- \else 
+ \else
          \global \@minipagefalse
-          \hb@xt@\hsize{\box\@tempboxa\hfil}% 
-%          \hb@xt@\hsize{\box\@tempboxa}% 
+          \hb@xt@\hsize{\box\@tempboxa\hfil}%
+%          \hb@xt@\hsize{\box\@tempboxa}%
  \fi
  \vskip\belowcaptionskip
  \endsinglespace}
-% CAPTION FORMATTING 
+% CAPTION FORMATTING
 
 
 \renewcommand\footnoterule{%
@@ -803,7 +807,7 @@
     \hb@xt@0.4em{\hss\@makefnmark}#1}
 
 \long\def\@footnotetext#1{\insert\footins{\def\baselinestretch{1}\footnotesize
-    \interlinepenalty\interfootnotelinepenalty 
+    \interlinepenalty\interfootnotelinepenalty
     \splittopskip\footnotesep
     \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
     \hsize\columnwidth \@parboxrestore
